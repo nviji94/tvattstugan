@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tvättstugan</title>
+  <style>
+    :root {
+      --djup: #0f3d3e;
+      --accent: #2e7d74;
+      --fel: #a9473b;
+      --bakgrund: #f2f6f5;
+      --kort: #ffffff;
+      --linje: #d5dedd;
+      --text: #1f2a2a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      background: var(--bakgrund);
+      color: var(--text);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 16px 64px;
+    }
+    h1 { color: var(--djup); margin: 0 0 24px; font-size: 32px; letter-spacing: -0.5px; }
+    form {
+      display: flex; gap: 14px; align-items: end; flex-wrap: wrap;
+      background: var(--kort); border: 1px solid var(--linje); border-radius: 12px;
+      padding: 18px 20px; box-shadow: 0 1px 3px rgba(15, 61, 62, 0.08);
+    }
+    label { display: flex; flex-direction: column; font-size: 13px; font-weight: 600; color: var(--djup); gap: 6px; }
+    input, select, button { font: inherit; padding: 8px 12px; border-radius: 8px; }
+    input, select { border: 1px solid var(--linje); background: #fff; color: var(--text); }
+    input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+    button {
+      background: var(--djup); color: #fff; border: 0; font-weight: 600; padding: 9px 22px;
+      cursor: pointer; transition: background 0.15s;
+    }
+    button:hover { background: var(--accent); }
+    #meddelande { min-height: 28px; margin: 14px 4px; font-weight: 600; }
+    .ok { color: var(--accent); }
+    .fel { color: var(--fel); }
+    table {
+      border-collapse: separate; border-spacing: 0; width: 100%;
+      background: var(--kort); border: 1px solid var(--linje); border-radius: 12px; overflow: hidden;
+      box-shadow: 0 1px 3px rgba(15, 61, 62, 0.08);
+    }
+    th, td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--linje); }
+    tr:last-child th, tr:last-child td { border-bottom: 0; }
+    td + td, th + th { border-left: 1px solid var(--linje); }
+    tr:first-child th { background: var(--djup); color: #fff; font-size: 13px; border-left-color: rgba(255, 255, 255, 0.15); }
+    tr:not(:first-child) th { background: #e4eae9; color: var(--djup); text-transform: capitalize; width: 110px; }
+    tr:not(:first-child):hover td { background: #f7faf9; }
+    td.dubbel, tr:not(:first-child):hover td.dubbel { background: #f5e2de; color: var(--fel); font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Tvättstugan</h1>
+  <form id="formular">
+    <label>Lägenhet <input id="lagenhet" value="1101" size="6" /></label>
+    <label>Dag <select id="dag"></select></label>
+    <label>Pass <select id="pass"></select></label>
+    <button>Boka</button>
+  </form>
+  <div id="meddelande"></div>
+  <table id="schema"></table>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
